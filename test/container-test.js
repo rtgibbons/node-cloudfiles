@@ -52,6 +52,14 @@ vows.describe('node-cloudfiles/containers').addBatch({
           helpers.assertContainer(container);
         }
       },
+      "when creating a CDN container that already exists via string": {
+        topic: function () {
+          client.createContainer( "test_cdn_container", this.callback);
+        },
+        "should return a valid cdn container": function (err, container) {
+          helpers.assertCdnContainer(container);
+        }
+      },
     },
     "the getContainers() method": {
       "when requesting non-CDN containers": {
